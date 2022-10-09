@@ -20,7 +20,12 @@ def compile(event, context):
             "body": json.dumps({
                 "message": "Invalid secret",
                 "input": event,
-            })
+            }),
+            "headers": {
+                'Access-Control-Allow-Headers': 'Content-Type',
+                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Methods': 'OPTIONS,POST,GET'
+            }
         }
     source = body.get('source', '')
     file_name = str(uuid4())
