@@ -2,7 +2,7 @@ service: compile-checker-backend
 app: compile-checker
 org: s6007589
 
-frameworkVersion: '2'
+frameworkVersion: "2"
 
 provider:
   name: aws
@@ -24,3 +24,13 @@ functions:
       - http:
           path: /hello
           method: get
+  compile:
+    image:
+      name: appimage
+      command:
+        - handler.compile
+    events:
+      - http:
+          path: /compile
+          method: post
+    timeout: 30

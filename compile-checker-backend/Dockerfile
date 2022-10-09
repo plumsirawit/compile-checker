@@ -15,7 +15,7 @@ RUN mkdir /usr/src/app
 COPY handler.py /usr/src/app/handler.py
 WORKDIR /usr/src/app
 
-# COPY secret.py /usr/src/app/secret.py
+COPY secret.py /usr/src/app/secret.py
 
 # RUN chmod +x /python3.8/bin/python3.8
 ENTRYPOINT [ "python3.8", "-m", "awslambdaric" ]
