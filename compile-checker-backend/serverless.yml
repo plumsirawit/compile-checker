@@ -33,4 +33,5 @@ functions:
       - http:
           path: /compile
           method: post
+          cors: true
     timeout: 30
