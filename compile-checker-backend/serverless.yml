@@ -1,0 +1,26 @@
+service: compile-checker-backend
+app: compile-checker
+org: s6007589
+
+frameworkVersion: '2'
+
+provider:
+  name: aws
+  ecr:
+    images:
+      appimage:
+        path: ./
+  lambdaHashingVersion: 20201221
+  stage: dev
+  region: ap-southeast-1
+
+functions:
+  hello:
+    image:
+      name: appimage
+      command:
+        - handler.hello
+    events:
+      - http:
+          path: /hello
+          method: get
