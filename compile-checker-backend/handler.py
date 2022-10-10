@@ -31,7 +31,7 @@ def compile(event, context):
     file_name = str(uuid4())
     with open(f'/tmp/{file_name}.cpp', 'w') as f:
         f.write(source)
-    os.system(f'g++ -std=c++11 -O2 /tmp/{file_name}.cpp -o /tmp/{file_name}')
+    os.system(f'g++ -std=c++17 -O2 -static /tmp/{file_name}.cpp -o /tmp/{file_name}')
     with open(f'/tmp/{file_name}', 'rb') as f:
         output_file_content = base64.b64encode(f.read()).decode('utf-8')
     os.remove(f'/tmp/{file_name}.cpp')
